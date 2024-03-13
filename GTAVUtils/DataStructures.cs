@@ -42,7 +42,8 @@ namespace GTAVUtils
                 return Max.Y - Min.Y;
             }
         }
-        public bool IsValid {
+        public bool IsValid
+        {
             get
             {
                 //return true;
@@ -106,7 +107,8 @@ namespace GTAVUtils
             RoIEntity = entity;
             Pos = new Vector3(entity.Position.X, entity.Position.Y, entity.Position.Z);
             BBox = GTABoundingBox2.ComputeBoundingBox(entity);
-            if (!CheckVisible()) {
+            if (!CheckVisible())
+            {
                 BBox.Quality = GTABoundingBox2.DataQuality.Middle;
             }
             Type = detectionType;
@@ -177,7 +179,7 @@ namespace GTAVUtils
 
         public Vector3 CamRot { get; }
 
-        public int Order { get;  }
+        public int Order { get; }
 
         private int GetWidth(float w)
         {
@@ -252,8 +254,10 @@ namespace GTAVUtils
 
         public Bitmap Image { get; set; }
 
-        public int ImageWidth { 
-            get {
+        public int ImageWidth
+        {
+            get
+            {
                 return Image.Width;
             }
         }
@@ -291,7 +295,7 @@ namespace GTAVUtils
 
         public void Draw()
         {
-            foreach(ROI r in RoIs)
+            foreach (ROI r in RoIs)
             {
                 r.Draw(Image);
             }

@@ -7,18 +7,11 @@ namespace GTAVUtils
 {
     public class Common
     {
-        public static Bitmap GetScreenshot()
-        {
-            Bitmap screenshot = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            Graphics g = Graphics.FromImage(screenshot);
-            g.CopyFromScreen(new Point(0, 0), new Point(0, 0), Screen.AllScreens[0].Bounds.Size);
-            g.Dispose();
-            return screenshot;
-        }
+
 
         public static GTAVData DataPreprocess(Bitmap screenshot, ROI[] RoIs)
         {
-            float cutBorderWidth = .1f;
+            float cutBorderWidth = 0.1f;
 
             // cutImage
             int cutWidth = (int)(screenshot.Width * cutBorderWidth);
@@ -49,6 +42,7 @@ namespace GTAVUtils
                     }
                 }
             }
+            GTA.UI.Screen.ShowHelpTextThisFrame(string.Format("{0}, {1}", filteredRoIs.Count, RoIs.Length));
             return new GTAVData(cutedScreenshot, filteredRoIs.ToArray());
         }
     }
